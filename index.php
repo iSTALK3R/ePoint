@@ -2,6 +2,20 @@
 
 require __DIR__.'/vendor/autoload.php';
 
-use \App\Controller\Pages\Home;
+use CoffeeCode\Router\Router;
 
-echo Home::getHome();
+$router = new Router(ROOT);
+
+$router->namespace("App\Controller");
+
+$router->group(null);
+$router->get("/", "Web:home");
+
+$router->group("error")->namespace("App\Controller");
+$router->get("/{errcode}", "Web:error");
+
+$router->dispatch();
+
+if($router->error()) {
+    $router->redirect("/error/{$router->error()}");
+}
