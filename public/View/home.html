@@ -2,7 +2,7 @@
 
 {% block title %}Home{% endblock %}
 
-{% block style %}
+{% block stylesheet %}
 <link rel="stylesheet" href="http://localhost/epoint/public/assets/css/style.css">
 {% endblock %}
 
@@ -21,26 +21,26 @@
 
 {% block content %}
 
-<section class="ponto">
+<section class="ponto mt-5">
     <div class="container">
-        <div class="row">
+        <div class="row px-5">
             <div class="col-lg-12" id="radio-funcs">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                     <label class="form-check-label" for="flexRadioDefault1">
-                        Default radio
+                        <img src="http://localhost/epoint/public/assets/images/avatar.jpeg" alt="avatar">
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                     <label class="form-check-label" for="flexRadioDefault2">
-                        Default radio
+                        <img src="http://localhost/epoint/public/assets/images/avatar.jpeg" alt="avatar">
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
                     <label class="form-check-label" for="flexRadioDefault3">
-                        Default radio
+                        <img src="http://localhost/epoint/public/assets/images/avatar.jpeg" alt="avatar">
                     </label>
                 </div>
             </div>
@@ -48,4 +48,20 @@
     </div>
 </section>
 
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.querySelectorAll(".form-check-input").forEach(check => {
+        check.addEventListener("click", () => {
+            document.querySelectorAll("img").forEach(img => {
+                img.addEventListener("click", () => {
+                    if (check.checked) {
+                        console.log(img);
+                    }
+                });
+            });
+        });
+    });
+</script>
 {% endblock %}

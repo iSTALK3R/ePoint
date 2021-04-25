@@ -1,4 +1,23 @@
 #radio-funcs {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+}
+
+#radio-funcs input[type='radio'] {
+    display: none;
+}
+
+#radio-funcs label {
+    cursor: pointer;
+}
+
+#radio-funcs label img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+}
+
+#radio-funcs label img:hover {
+    border: 3px solid #198754;
+    opacity: .7;
 }
