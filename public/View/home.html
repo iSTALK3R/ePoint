@@ -26,23 +26,31 @@
         <div class="row px-5">
             <div class="col-lg-12" id="radio-funcs">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        <img src="http://localhost/epoint/public/assets/images/avatar.jpeg" alt="avatar">
-                    </label>
+                    <input class="form-check-input" type="radio" name="radioFuncs" id="radioFuncs1"
+                        value="Bartolomeu Mustafe">
+                    <label class="form-check-label" for="radioFuncs1">Bartolomeu Mustafe</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        <img src="http://localhost/epoint/public/assets/images/avatar.jpeg" alt="avatar">
-                    </label>
+                    <input class="form-check-input" type="radio" name="radioFuncs" id="radioFuncs2"
+                        value="Marquita Zuleica">
+                    <label class="form-check-label" for="radioFuncs2">Marquita Zuleica</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                    <label class="form-check-label" for="flexRadioDefault3">
-                        <img src="http://localhost/epoint/public/assets/images/avatar.jpeg" alt="avatar">
-                    </label>
+                    <input class="form-check-input" type="radio" name="radioFuncs" id="radioFuncs3"
+                        value="Jeromeu Aguilar">
+                    <label class="form-check-label" for="radioFuncs3">Jeromeu Aguilar</label>
                 </div>
+            </div>
+            <div class="col-lg-12 text-center mt-4">
+                <div class="nomeFunc fs-5 text-light">
+                    <h4>Funcionário:</h4>
+                    <h5 id="displayNameFunc">Nenhum funcionário selecionado...</h5>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4 justify-content-center">
+            <div class="col-lg-4">
+                <input type="text" class="form-control" placeholder="Sua senha...">
             </div>
         </div>
     </div>
@@ -52,16 +60,12 @@
 
 {% block scripts %}
 <script>
-    document.querySelectorAll(".form-check-input").forEach(check => {
-        check.addEventListener("click", () => {
-            document.querySelectorAll("img").forEach(img => {
-                img.addEventListener("click", () => {
-                    if (check.checked) {
-                        console.log(img);
-                    }
-                });
-            });
+    let checkBtns = document.getElementsByName("radioFuncs");
+
+    for (let i = 0; i < checkBtns.length; i++) {
+        checkBtns[i].addEventListener("click", () => {
+            document.getElementById("displayNameFunc").innerHTML = checkBtns[i].value;
         });
-    });
+    }
 </script>
 {% endblock %}
