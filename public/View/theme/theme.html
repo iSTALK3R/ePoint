@@ -13,14 +13,31 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
         integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 
-    {% block stylesheet %}{% endblock %}
+    <link rel="stylesheet" href="http://localhost/epoint/public/assets/css/custom.css">
 </head>
 
 <body class="bg-dark">
     <div class="container">
-        {% block header %}{% endblock %}
+        <header class="mb-5">
+            <nav class="navbar text-light bg-success px-4">
+                <div class="container justify-content-between">
+                    <a href="http://localhost/epoint" class="nav-brand text-light fs-1"><i
+                            class="fas fa-parking"></i></a>
+                    <a href="http://localhost/epoint/add-funcionario" class="btn btn-outline-light">Cadastrar
+                        Funcionário</a>
+                </div>
+            </nav>
+        </header>
+
         {% block content %}{% endblock %}
-        {% block footer %}{% endblock %}
+
+        <footer>
+            <div class="row text-center mt-5">
+                <div class="col-lg-12">
+                    <small class="text-light">&copy; Todos os direitos reservados</small>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <!-- Bootstrap Bundle -->

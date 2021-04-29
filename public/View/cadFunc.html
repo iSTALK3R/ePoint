@@ -1,0 +1,34 @@
+{% extends "theme/theme.html" %}
+
+{% block title %}Cadastrar Funcionário{% endblock %}
+
+{% block content %}
+<section class="cadFunc">
+    <div class="row">
+        <div class="col-lg-6">
+            <form action="{{url}}/cad-funcionario" method="post">
+                <div class="mb-3">
+                    <label for="username" class="form-label text-light">Nome de Usuário</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label text-light">Nome Completo</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="mb-3">
+                    <label for="passwd" class="form-label text-light">Senha</label>
+                    <input type="text" class="form-control" id="passwd" name="passwd">
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-success px-4">Terminar</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-6 text-end mb-5">
+            <h2 class="text-light text-center mt-3">Cadastro de Funcionários</h2>
+            <img src="https://bpng.subpng.com/dy/db9bbea07260f7e5fa5b1b3b92366b54/L0KzQYq3VMEyN6F1i5H0aYP2gLBuTfNtd6ZpRdV4bYD4hLr1h71laaVmReV9b4Lkd7a0gB9ueKZ5feQ2c3X1hrb5k71xepDpRadsYXbpSLWChfY1aWc3RqY7OEW0Q4m4UcU2PWE4TqUCN0m7QIK1kP5o/kisspng-cloud-computing-data-storage-computer-servers-prod-5caff8d9ef4a62.4285138115550363779801.png"
+                alt="abstract" style="width: 500px; height: 350px;">
+        </div>
+    </div>
+</section>
+{% endblock %}

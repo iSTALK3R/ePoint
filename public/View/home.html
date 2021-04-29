@@ -1,71 +1,41 @@
 {% extends "theme/theme.html" %}
 
-{% block title %}Home{% endblock %}
-
-{% block stylesheet %}
-<link rel="stylesheet" href="http://localhost/epoint/public/assets/css/style.css">
-{% endblock %}
-
-{% block header %}
-
-<header>
-    <nav class="navbar text-light bg-success px-4">
-        <div class="container justify-content-between">
-            <a href="" class="nav-brand text-light fs-1"><i class="fas fa-parking"></i></a>
-            <a href="" class="btn btn-outline-light">Tap</a>
-        </div>
-    </nav>
-</header>
-
-{% endblock %}
+{% block title %}Início{% endblock %}
 
 {% block content %}
-
-<section class="ponto mt-5">
+<section class="ponto">
     <div class="container">
-        <div class="row px-5">
-            <div class="col-lg-12" id="radio-funcs">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="radioFuncs" id="radioFuncs1"
-                        value="Bartolomeu Mustafe">
-                    <label class="form-check-label" for="radioFuncs1">Bartolomeu Mustafe</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="radioFuncs" id="radioFuncs2"
-                        value="Marquita Zuleica">
-                    <label class="form-check-label" for="radioFuncs2">Marquita Zuleica</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="radioFuncs" id="radioFuncs3"
-                        value="Jeromeu Aguilar">
-                    <label class="form-check-label" for="radioFuncs3">Jeromeu Aguilar</label>
-                </div>
-            </div>
-            <div class="col-lg-12 text-center mt-4">
-                <div class="nomeFunc fs-5 text-light">
-                    <h4>Funcionário:</h4>
-                    <h5 id="displayNameFunc">Nenhum funcionário selecionado...</h5>
+        <form action="{{url}}/addponto" method="post">
+            <div class="row px-5">
+                <div class="col-lg-12 flex-wrap" id="radio-funcs">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radioFuncs" id="radioFuncs1"
+                            value="Bartolomeu Mustafe">
+                        <label class="form-check-label" for="radioFuncs1">Bartolomeu Mustafe</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radioFuncs" id="radioFuncs2"
+                            value="Marquita Zuleica">
+                        <label class="form-check-label" for="radioFuncs2">Marquita Zuleica</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radioFuncs" id="radioFuncs3"
+                            value="Jeromeu Aguilar">
+                        <label class="form-check-label" for="radioFuncs3">Jeromeu Aguilar</label>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row mt-4 justify-content-center">
-            <div class="col-lg-4">
-                <input type="text" class="form-control" placeholder="Sua senha...">
+            <div class="row mt-5 justify-content-center">
+                <div class="col-lg-4">
+                    <input type="text" name="passwd" class="form-control" placeholder="Sua senha...">
+                </div>
             </div>
-        </div>
+            <div class="row mt-5 text-center">
+                <div class="col-lg-12">
+                    <button type="submit" class="btn btn-success px-5 fs-5">Confirmar</button>
+                </div>
+            </div>
+        </form>
     </div>
 </section>
-
-{% endblock %}
-
-{% block scripts %}
-<script>
-    let checkBtns = document.getElementsByName("radioFuncs");
-
-    for (let i = 0; i < checkBtns.length; i++) {
-        checkBtns[i].addEventListener("click", () => {
-            document.getElementById("displayNameFunc").innerHTML = checkBtns[i].value;
-        });
-    }
-</script>
 {% endblock %}
