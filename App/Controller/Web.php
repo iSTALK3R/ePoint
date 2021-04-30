@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use \Twig\Loader\FilesystemLoader;
 use \Twig\Environment;
+use \App\Model\User;
 
 class Web
 {
@@ -26,7 +27,23 @@ class Web
 
         $template = $twig->load('cadFunc.html');
 
-        echo $template->render();
+        echo $template->render(["url" => ROOT]);
+    }
+
+    public function cadFunc($data) {
+        try {
+            $user = new User();
+            
+            $user->username = $data["username"];
+            $user->name = $data["name"];
+            $user->passwd = md5($data["passwd"]);
+
+            $user->save();
+
+            echo "<script>alert('Funcionário cadastrado com sucesso!');</script>";
+        } catch (Exception $e) {
+            throw new Exception("Não foi possivel cadastrar o funcionário!" . $e->getMessage());
+        }
     }
 
     public function error($data) {
