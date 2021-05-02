@@ -4,61 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "754f4ad2399638e4472649c4da725ab3",
+    "content-hash": "7ad82d214e3ac10c302eda2ef94db12a",
     "packages": [
-        {
-            "name": "coffeecode/datalayer",
-            "version": "1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/robsonvleite/datalayer.git",
-                "reference": "928012861d39b855c91485a0f1bd29d202c2fd08"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/robsonvleite/datalayer/zipball/928012861d39b855c91485a0f1bd29d202c2fd08",
-                "reference": "928012861d39b855c91485a0f1bd29d202c2fd08",
-                "shasum": ""
-            },
-            "require": {
-                "ext-pdo": "*",
-                "php": "^7.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "CoffeeCode\\DataLayer\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Robson V. Leite",
-                    "email": "cursos@upinside.com.br",
-                    "role": "Developer"
-                }
-            ],
-            "description": "The data layer is a persistent abstraction component of your database that PDO",
-            "homepage": "http://www.upinside.com.br",
-            "keywords": [
-                "Coffeecode",
-                "crud",
-                "database",
-                "delete",
-                "destroy",
-                "pdo",
-                "save",
-                "upinside"
-            ],
-            "support": {
-                "issues": "https://github.com/robsonvleite/datalayer/issues",
-                "source": "https://github.com/robsonvleite/datalayer/tree/master"
-            },
-            "time": "2019-07-08T20:23:49+00:00"
-        },
         {
             "name": "coffeecode/router",
             "version": "1.0.8",

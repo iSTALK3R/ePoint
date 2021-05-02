@@ -6,6 +6,8 @@ use \Twig\Loader\FilesystemLoader;
 use \Twig\Environment;
 use \App\Model\User;
 
+use \Exception;
+
 class Web
 {
     public function home() {
@@ -31,18 +33,17 @@ class Web
     }
 
     public function cadFunc($data) {
-        try {
-            $user = new User();
-            
-            $user->username = $data["username"];
-            $user->name = $data["name"];
-            $user->passwd = md5($data["passwd"]);
+        $user = new User();
+        echo "<pre>";
+        print_r($user);
+        echo "</pre>";
+    }
 
-            $user->save();
-
-            echo "<script>alert('Funcionário cadastrado com sucesso!');</script>";
-        } catch (Exception $e) {
-            throw new Exception("Não foi possivel cadastrar o funcionário!" . $e->getMessage());
+    public function listUsers() {
+        $user = new User();
+        $lista = $user->listAll();
+        if (!$lista) {
+            echo "Oops";
         }
     }
 

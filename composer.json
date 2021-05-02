@@ -9,7 +9,6 @@
         ]
     },
     "require": {
-        "coffeecode/datalayer": "1.1.2",
         "coffeecode/router": "1.0.*",
         "twig/twig": "3.3.*"
     }
