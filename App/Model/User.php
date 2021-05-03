@@ -4,35 +4,40 @@ namespace App\Model;
 
 class User
 {
-    public function listAll() {
-        $conn = Connection::getInstance();
-        $stmt = $conn->prepare("SELECT * FROM users");
-        $stmt->execute();
+    private $id;
+    private $name;
+    private $username;
+    private $passwd;
 
-        $result = $stmt->fetchAll();
-
-        if (!$result) {
-            return false;
-        }
-
-        return $result;
+    public function getId() {
+        return $this->id;
     }
 
-    public function insert($name, $username, $passwd, $created_at, $updated_at) {
-        $conn = Connection::getInstance();
-        $stmt = $conn->prepare("INSERT INTO users VALUES (name = :name, username = :username, passwd = :passwd, created_at = :cat, updated_at = :uat)");
-        $stmt->bindParam(":name", $name);
-        $stmt->bindParam(":username", $username);
-        $stmt->bindParam(":passwd", $passwd);
-        $stmt->bindParam(":cat", $created_at);
-        $stmt->bindParam(":uat", $updated_at);
+    public function setId($id) {
+        $this->id = $id;
+    }
 
-        $exec = $stmt->execute();
+    public function getName() {
+        return $this->name;
+    }
 
-        if (!$exec) {
-            return false;
-        }
-        
-        return $exec;
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function getUsername() {
+        return $this->username;
+    }
+
+    public function setUsername($username) {
+        $this->username = $username;
+    }
+
+    public function getPasswd() {
+        return $this->passwd;
+    }
+
+    public function setPasswd($passwd) {
+        $this->passwd = $passwd;
     }
 }

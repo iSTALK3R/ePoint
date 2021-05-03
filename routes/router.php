@@ -7,12 +7,11 @@ $router = new Router(ROOT);
 $router->namespace("App\Controller");
 
 $router->group(null);
-$router->get("/", "Web:home");
-$router->get("/add-funcionario", "Web:addFunc");
-$router->get("/list", "Web:listUsers");
+$router->get("/", "Web:inicio");
 
-$router->post("/cad-funcionario", "Web:cadFunc");
-$router->post("/addponto", "Web:addPonto");
+$router->group("funcionario");
+$router->get("/", "FuncionarioController:viewAddFuncionario");
+$router->post("/cadastrar-funcionario", "FuncionarioController:addFuncionario");
 
 $router->group("error")->namespace("App\Controller");
 $router->get("/{errcode}", "Web:error");
