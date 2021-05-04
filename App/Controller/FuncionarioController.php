@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use \Twig\Loader\FilesystemLoader;
-use \Twig\Environment;
 use \App\Model\User;
 use \App\Model\UserDao;
 
@@ -12,8 +10,8 @@ use \Exception;
 class FuncionarioController
 {
     public function viewAddFuncionario() {
-        $loader = new FilesystemLoader(__DIR__.'/../../public/View');
-        $twig = new Environment($loader);
+        $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/../../public/View');
+        $twig = new \Twig\Environment($loader);
 
         $template = $twig->load('cadastro_funcionario.html');
 

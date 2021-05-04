@@ -15,50 +15,59 @@ class UserDao
     }
 
     public function listAll() {
-        try {
-            $query = "SELECT * FROM users";
-            $stmt = $this->instance->prepare($query);
-            $stmt->execute();
+        $query = "SELECT * FROM users";
 
-            if ($stmt->rowCount() < 1) {
-                echo "Nenhum dado encontrado";
-            }
+        $stmt = $this->instance->prepare($query);
+        $stmt->execute();
 
+        if ($stmt->rowCount() > 0) {
             $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-
             return $result;
-        } catch (\Exception $e) {
-            echo "Erro: " . $e->getMessage();
+        } else {
+            return [];
+        }
+    }
 
-            return false;
+    public function listById($id) {
+        $query = "SELECT * FROM users WHERE id = :id";
+        
+        $stmt = $this->instance->prepare($query);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            return $result;
+        } else {
+            return [];
         }
     }
 
     public function inserirFuncionario() {
-        try {
-            $data = [
-                "name" => $this->user->getName(),
-                "user" => $this->user->getUsername(),
-                "pass" => $this->user->getPasswd(),
-                "crat" => date('Y-m-d H:i:s'),
-                "upat" => date('Y-m-d H:i:s')
-            ];
+        $data = [
+            "name" => $this->user->getName(),
+            "user" => $this->user->getUsername(),
+            "pass" => $this->user->getPasswd(),
+            "crat" => date('Y-m-d H:i:s'),
+            "upat" => date('Y-m-d H:i:s')
+        ];
 
-            $query = "INSERT INTO users (name, username, passwd, created_at, updated_at)
-            VALUES (:name, :user, :pass, :crat, :upat)";
+        $query = "INSERT INTO users (name, username, passwd, created_at, updated_at)
+        VALUES (:name, :user, :pass, :crat, :upat)";
             
-            $stmt = $this->instance->prepare($query);
-            $stmt->bindParam(':name', $data["name"]);
-            $stmt->bindParam(':user', $data["user"]);
-            $stmt->bindParam(':pass', $data["pass"]);
-            $stmt->bindParam(':crat', $data["crat"]);
-            $stmt->bindParam(':upat', $data["upat"]);
+        $stmt = $this->instance->prepare($query);
+        $stmt->bindParam(':name', $data["name"]);
+        $stmt->bindParam(':user', $data["user"]);
+        $stmt->bindParam(':pass', $data["pass"]);
+        $stmt->bindParam(':crat', $data["crat"]);
+        $stmt->bindParam(':upat', $data["upat"]);
 
-            $exec = $stmt->execute();
+        $exec = $stmt->execute();
 
+        if ($exec) {
             return true;
-        } catch (\Exception $e) {
-            throw new Exception("Não foi possível cadastrar o funcionário..." . $e->getMessage());
+        } else {
+            return false;
         }
     }
 }

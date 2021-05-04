@@ -2,14 +2,11 @@
 
 namespace App\Controller;
 
-use \Twig\Loader\FilesystemLoader;
-use \Twig\Environment;
-
 class Web
 {
     public function inicio() {
-        $loader = new FilesystemLoader(__DIR__.'/../../public/View');
-        $twig = new Environment($loader);
+        $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/../../public/View');
+        $twig = new \Twig\Environment($loader);
 
         $template = $twig->load('inicio.html');
 
