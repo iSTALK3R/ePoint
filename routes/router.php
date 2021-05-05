@@ -7,7 +7,7 @@ $router = new Router(ROOT);
 $router->namespace("App\Controller");
 
 $router->group(null);
-$router->get("/", "Web:inicio");
+$router->get("/", "Inicio:inicio");
 
 $router->group("funcionario");
 $router->get("/", "FuncionarioController:viewAddFuncionario");

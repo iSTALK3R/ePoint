@@ -45,22 +45,26 @@ class UserDao
 
     public function inserirFuncionario() {
         $data = [
-            "name" => $this->user->getName(),
-            "user" => $this->user->getUsername(),
-            "pass" => $this->user->getPasswd(),
-            "crat" => date('Y-m-d H:i:s'),
-            "upat" => date('Y-m-d H:i:s')
+            "name"  => $this->user->getName(),
+            "user"  => $this->user->getUsername(),
+            "pass"  => $this->user->getPasswd(),
+            "setor" => $this->user->getSetor(),
+            "cpf"   => $this->user->getCpf(),
+            "crat"  => date('Y-m-d H:i:s'),
+            "upat"  => date('Y-m-d H:i:s')
         ];
 
-        $query = "INSERT INTO users (name, username, passwd, created_at, updated_at)
-        VALUES (:name, :user, :pass, :crat, :upat)";
+        $query = "INSERT INTO users (name, username, password, setor, cpf, created_at, updated_at)
+        VALUES (:name, :user, :pass, :setor, :cpf, :crat, :upat)";
             
         $stmt = $this->instance->prepare($query);
-        $stmt->bindParam(':name', $data["name"]);
-        $stmt->bindParam(':user', $data["user"]);
-        $stmt->bindParam(':pass', $data["pass"]);
-        $stmt->bindParam(':crat', $data["crat"]);
-        $stmt->bindParam(':upat', $data["upat"]);
+        $stmt->bindParam(':name',   $data["name"]);
+        $stmt->bindParam(':user',   $data["user"]);
+        $stmt->bindParam(':pass',   $data["pass"]);
+        $stmt->bindParam(':setor',  $data["setor"]);
+        $stmt->bindParam(':cpf',    $data["cpf"]);
+        $stmt->bindParam(':crat',   $data["crat"]);
+        $stmt->bindParam(':upat',   $data["upat"]);
 
         $exec = $stmt->execute();
 

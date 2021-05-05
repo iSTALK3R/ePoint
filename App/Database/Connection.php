@@ -11,7 +11,7 @@ class Connection
     public static function getInstance() {
         if (!isset(self::$instance)) {
             try {
-                self::$instance = new PDO("mysql:host=localhost:3306; dbname=mponto; charset=utf8;", 'root', '');
+                self::$instance = new PDO("mysql:host=".HOST."; dbname=".NAME."; charset=".CHAR.";", USER, PASS);
             } catch (PDOException $e) {
                 print "Erro: " . $e->getMessage();
             }

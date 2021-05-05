@@ -8,21 +8,13 @@
         <form action="{{url}}/addponto" method="post">
             <div class="row px-5">
                 <div class="col-lg-12 flex-wrap" id="radio-funcs">
+                    {% for user in users %}
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radioFuncs" id="radioFuncs1"
-                            value="Bartolomeu Mustafe">
-                        <label class="form-check-label" for="radioFuncs1">Bartolomeu Mustafe</label>
+                        <input class="form-check-input" type="radio" name="radioFuncs" id="radioFuncs{{user.id}}"
+                            value="{{user.name}}">
+                        <label class="form-check-label" for="radioFuncs{{user.id}}">{{user.name}}</label>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radioFuncs" id="radioFuncs2"
-                            value="Marquita Zuleica">
-                        <label class="form-check-label" for="radioFuncs2">Marquita Zuleica</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radioFuncs" id="radioFuncs3"
-                            value="Jeromeu Aguilar">
-                        <label class="form-check-label" for="radioFuncs3">Jeromeu Aguilar</label>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="row mt-5 justify-content-center">

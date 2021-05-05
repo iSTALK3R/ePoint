@@ -8,6 +8,10 @@ class User
     private $name;
     private $username;
     private $passwd;
+    private $setor;
+    private $cpf;
+    private $created_at;
+    private $updated_at;
 
     public function getId() {
         return $this->id;
@@ -39,5 +43,29 @@ class User
 
     public function setPasswd($passwd) {
         $this->passwd = $passwd;
+    }
+
+    public function getSetor() {
+        return $this->setor;
+    }
+
+    public function setSetor($setor) {
+        $this->setor = $setor;
+    }
+
+    public function getCpf() {
+        return $this->cpf;
+    }
+
+    public function setCpf($cpf) {
+        $this->cpf = $cpf;
+    }
+
+    public function getCreatedAt() {
+        return $this->created_at;
+    }
+
+    public function getUpdatedAt() {
+        return $this->updated_at;
     }
 }
