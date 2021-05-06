@@ -8,6 +8,7 @@ $router->namespace("App\Controller");
 
 $router->group(null);
 $router->get("/", "Inicio:inicio");
+$router->post("/bater-ponto", "Inicio:baterPonto");
 
 $router->group("funcionario");
 $router->get("/", "FuncionarioController:viewAddFuncionario");

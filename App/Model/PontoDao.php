@@ -15,7 +15,7 @@ class PontoDao
     }
 
     public function listAllRegs() {
-        $query = "SELECT * FROM pontos";
+        $query = "SELECT * FROM pontos AS P INNER JOIN users U ON P.id_funcionario = U.id";
 
         $stmt = $this->instance->prepare($query);
         $stmt->execute();
@@ -28,8 +28,12 @@ class PontoDao
         }
     }
 
-    public function baterPonto($data) {
-        $data = [];
+    public function baterPonto() {
+        $data = [
+            "id_funcionario"    => $this->ponto->getIdFuncionario(),
+            "tipo"              => $this->ponto->getTipo(),
+            "data_hora"         => $this->ponto->getDataHora()
+        ];
 
         $query = "INSERT INTO pontos (id_funcionario, tipo, data_hora) 
                     VALUES (:id_funcionario, :tipo, :data_hora)";

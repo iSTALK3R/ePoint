@@ -28,7 +28,9 @@ class UserDao
         }
     }
 
-    public function listById($id) {
+    public function listById() {
+        $id = $this->user->getId();
+
         $query = "SELECT * FROM users WHERE id = :id";
         
         $stmt = $this->instance->prepare($query);
