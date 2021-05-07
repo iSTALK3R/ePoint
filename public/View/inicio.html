@@ -19,7 +19,7 @@
             </div>
             <div class="row mt-5 justify-content-center">
                 <div class="col-lg-4">
-                    <input type="text" name="passwd" class="form-control" placeholder="Sua senha...">
+                    <input type="password" name="passwd" class="form-control" placeholder="Sua senha...">
                 </div>
             </div>
             <div class="row px-5 mt-5">
@@ -56,12 +56,12 @@
             <tbody>
                 {% for ponto in pontos %}
                 <tr>
-                    <td scope="row">ponto.id_usuario</td>
-                    <td>ponto.name</td>
-                    <td>ponto.setor</td>
-                    <td>ponto.dataHora</td>
-                    <td>ponto.tipo</td>
-                    <td>ponto.cpf</td>
+                    <td scope="row">{{ponto.id_funcionario}}</td>
+                    <td>{{ponto.name}}</td>
+                    <td>{{ponto.setor}}</td>
+                    <td>{{ponto.data_hora}}</td>
+                    <td>{{ponto.tipo}}</td>
+                    <td>{{ponto.cpf}}</td>
                 </tr>
                 {% endfor %}
             </tbody>

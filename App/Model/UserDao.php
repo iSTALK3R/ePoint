@@ -38,7 +38,7 @@ class UserDao
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
-            $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            $result = $stmt->fetch(\PDO::FETCH_ASSOC);
             return $result;
         } else {
             return [];
@@ -52,8 +52,8 @@ class UserDao
             "pass"  => $this->user->getPasswd(),
             "setor" => $this->user->getSetor(),
             "cpf"   => $this->user->getCpf(),
-            "crat"  => date('Y-m-d H:i:s'),
-            "upat"  => date('Y-m-d H:i:s')
+            "crat"  => $this->user->getCreatedAt(),
+            "upat"  => $this->user->getUpdatedAt()
         ];
 
         $query = "INSERT INTO users (name, username, password, setor, cpf, created_at, updated_at)

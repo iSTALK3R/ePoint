@@ -26,6 +26,8 @@ class FuncionarioController
         $user->setPasswd(md5($data["passwd"]));
         $user->setSetor($data["setor"]);
         $user->setCpf($data["cpf"]);
+        $user->setCreatedAt(date('Y-m-d H:i:s'));
+        $user->setUpdatedAt(date('Y-m-d H:i:s'));
 
         $userDao = new UserDao($user);
         $funcList = $userDao->listAll();

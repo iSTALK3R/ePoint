@@ -5,7 +5,7 @@ namespace App\Model;
 class Ponto
 {
     private $id;
-    private $idFuncinario;
+    private $idFuncionario;
     private $tipo;
     private $dataHora;
 
@@ -18,7 +18,7 @@ class Ponto
     }
 
     public function getIdFuncionario() {
-        return $this->id_funcinario;
+        return $this->idFuncionario;
     }
 
     public function setIdFuncionario($idFuncionario) {
