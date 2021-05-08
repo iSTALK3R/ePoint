@@ -47,6 +47,7 @@
                 <tr>
                     <th scope="col">Matrícula</th>
                     <th scope="col">Nome</th>
+                    <th scope="col">Idade</th>
                     <th scope="col">Setor</th>
                     <th scope="col">Data e Hora</th>
                     <th scope="col">Ponto</th>
@@ -56,11 +57,12 @@
             <tbody>
                 {% for ponto in pontos %}
                 <tr>
-                    <td scope="row">{{ponto.id_funcionario}}</td>
+                    <td scope="row">{{ponto.users_id}}</td>
                     <td>{{ponto.name}}</td>
+                    <td>{{ponto.birth_date}}</td>
                     <td>{{ponto.setor}}</td>
-                    <td>{{ponto.data_hora}}</td>
-                    <td>{{ponto.tipo}}</td>
+                    <td>{{ponto.datetime}}</td>
+                    <td>{{ponto.type}}</td>
                     <td>{{ponto.cpf}}</td>
                 </tr>
                 {% endfor %}

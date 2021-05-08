@@ -8,6 +8,7 @@ class User
     private $name;
     private $username;
     private $passwd;
+    private $birth;
     private $setor;
     private $cpf;
     private $created_at;
@@ -43,6 +44,14 @@ class User
 
     public function setPasswd($passwd) {
         $this->passwd = $passwd;
+    }
+
+    public function getBirthDate() {
+        return $this->birth;
+    }
+
+    public function setBirthDate($birth) {
+        $this->birth = $birth;
     }
 
     public function getSetor() {

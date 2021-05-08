@@ -24,23 +24,17 @@ class FuncionarioController
         $user->setName($data["name"]);
         $user->setUsername($data["username"]);
         $user->setPasswd(md5($data["passwd"]));
+        $user->setBirthDate($data["data_nascimento"]);
         $user->setSetor($data["setor"]);
         $user->setCpf($data["cpf"]);
         $user->setCreatedAt(date('Y-m-d H:i:s'));
         $user->setUpdatedAt(date('Y-m-d H:i:s'));
 
         $userDao = new UserDao($user);
-        $funcList = $userDao->listAll();
 
-        $isEqual = false;
-        $username = $user->getUsername();
-        for ($i = 0; $i < count($funcList); $i++) {
-            if ($funcList[$i]["username"] == $username) {
-                $isEqual = true;
-            }
-        }
+        $inUse = $userDao->inUse($data["username"]);
 
-        if ($isEqual) {
+        if ($inUse) {
             echo "<script>alert('Nome de usuário já está em uso!');</script>";
             echo "<meta http-equiv='refresh' content='0;url=".ROOT."/funcionario'>";
             exit;

@@ -14,6 +14,18 @@ class UserDao
         $this->instance = Connection::getInstance();
     }
 
+    public function inUse($username) {
+        $users = $this->listAll();
+
+        foreach ($users as $user) {
+            if ($user["username"] == $username) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function listAll() {
         $query = "SELECT * FROM users";
 
@@ -50,19 +62,23 @@ class UserDao
             "name"  => $this->user->getName(),
             "user"  => $this->user->getUsername(),
             "pass"  => $this->user->getPasswd(),
+            "birth" => $this->user->getBirthDate(),
             "setor" => $this->user->getSetor(),
             "cpf"   => $this->user->getCpf(),
             "crat"  => $this->user->getCreatedAt(),
             "upat"  => $this->user->getUpdatedAt()
         ];
 
-        $query = "INSERT INTO users (name, username, password, setor, cpf, created_at, updated_at)
-        VALUES (:name, :user, :pass, :setor, :cpf, :crat, :upat)";
+        
+
+        $query = "INSERT INTO users (name, username, password, birth_date, setor, cpf, created_at, updated_at)
+        VALUES (:name, :user, :pass, :birth, :setor, :cpf, :crat, :upat)";
             
         $stmt = $this->instance->prepare($query);
         $stmt->bindParam(':name',   $data["name"]);
         $stmt->bindParam(':user',   $data["user"]);
         $stmt->bindParam(':pass',   $data["pass"]);
+        $stmt->bindParam(':birth',   $data["birth"]);
         $stmt->bindParam(':setor',  $data["setor"]);
         $stmt->bindParam(':cpf',    $data["cpf"]);
         $stmt->bindParam(':crat',   $data["crat"]);
