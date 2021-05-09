@@ -59,12 +59,13 @@
                 <tr>
                     <td scope="row">{{ponto.users_id}}</td>
                     <td>{{ponto.name}}</td>
-                    <td>{{ponto.birth_date}}</td>
+                    <td name="display_age">0</td>
                     <td>{{ponto.setor}}</td>
                     <td>{{ponto.datetime}}</td>
                     <td>{{ponto.type}}</td>
                     <td>{{ponto.cpf}}</td>
                 </tr>
+                <input type="hidden" name="birth" value="{{ponto.birth_date}}">
                 {% endfor %}
             </tbody>
         </table>
@@ -89,5 +90,27 @@
             }
         });
     });
+
+    let data_atual = new Date(),
+        ano_atual = data_atual.getFullYear(),
+        mes_atual = data_atual.getMonth() + 1,
+        dia_atual = data_atual.getDate();
+    let data_nascimento = document.getElementsByName("birth");
+    let displayAge = document.getElementsByName("display_age");
+
+    for (let i = 0; data_nascimento.length; i++) {
+        let dn = data_nascimento[i].value.split("-");
+        let ano_aniversario = +dn[0];
+        let mes_aniversario = +dn[1];
+        let dia_aniversario = +dn[2];
+
+        let age = ano_atual - ano_aniversario;
+
+        if (mes_atual < mes_aniversario || mes_atual == mes_aniversario && dia_atual < dia_aniversario) {
+            age--
+        }
+
+        displayAge[i].innerHTML = age;
+    }
 </script>
 {% endblock %}
