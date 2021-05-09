@@ -37,17 +37,16 @@ class FuncionarioController
         if ($inUse) {
             echo "<script>alert('Nome de usuário já está em uso!');</script>";
             echo "<meta http-equiv='refresh' content='0;url=".ROOT."/funcionario'>";
-            exit;
-        }
-
-        $insert = $userDao->inserirFuncionario();
-
-        if ($insert) {
-            echo "<script>alert('Funcionário cadastrado com sucesso!');</script>";
-            echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
         } else {
-            echo "<script>alert('Erro ao cadastrar o funcionário!');</script>";
-            echo "<meta http-equiv='refresh' content='0;url=".ROOT."/funcionario'>";
+            $insert = $userDao->inserirFuncionario();
+
+            if ($insert) {
+                echo "<script>alert('Funcionário cadastrado com sucesso!');</script>";
+                echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
+            } else {
+                echo "<script>alert('Erro ao cadastrar o funcionário!');</script>";
+                echo "<meta http-equiv='refresh' content='0;url=".ROOT."/funcionario'>";
+            }
         }
     }
 

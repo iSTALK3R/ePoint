@@ -14,6 +14,16 @@ class UserDao
         $this->instance = Connection::getInstance();
     }
 
+    public function auth($password) {
+        $user = $this->listById();
+
+        if ($user["password"] != $password) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function inUse($username) {
         $users = $this->listAll();
 

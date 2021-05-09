@@ -23,7 +23,9 @@ class Inicio
         $users = $userDao->listAll();
         $pontos = $pontoDao->listAllRegs();
 
-        echo $template->render(["url" => ROOT, "users" => $users, "pontos" => $pontos]);
+        echo $template->render(["url" => ROOT,
+                                "users" => $users,
+                                "pontos" => $pontos]);
     }
 
     public function baterPonto($data) {
@@ -39,21 +41,20 @@ class Inicio
 
         $user->setId($data["id"]);
 
-        $rUser = $userDao->listById();
+        $auth = $userDao->auth(md5($data["passwd"]));
 
-        if ($rUser["password"] != md5($data["passwd"])) {
+        if ($auth) {
             echo "<script>alert('Senha incorreta!');</script>";
             echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
-            exit;
-        }
-
-        $inserir = $pontoDao->baterPonto();
-
-        if ($inserir) {
-            echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
         } else {
-            echo "<script>alert('Erro ao bater o ponto');</script>";
-            echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
+            $insert = $pontoDao->baterPonto();
+
+            if ($insert) {
+                echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
+            } else {
+                echo "<script>alert('Erro ao bater o ponto');</script>";
+                echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
+            }
         }
     }
 
