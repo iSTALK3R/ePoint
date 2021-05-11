@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('America/Sao_Paulo'); // Setando o timezone para o horário de Brasília 
+
 define("ROOT", "http://localhost/epoint"); // Caminho padrão da aplicação
 
 /**

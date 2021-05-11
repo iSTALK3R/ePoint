@@ -33,7 +33,8 @@ class Inicio
 
         $ponto->setIdFuncionario($data["id"]);
         $ponto->setTipo($data["tipo"]);
-        $ponto->setDataHora(date('Y-m-d H:i:s'));
+        $ponto->setData(date('Y-m-d'));
+        $ponto->setHora(date('H:i:s'));
 
         $pontoDao = new PontoDao($ponto);
         $user = new User();
@@ -46,15 +47,23 @@ class Inicio
         if ($auth) {
             echo "<script>alert('Senha incorreta!');</script>";
             echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
+            exit;
         } else {
-            $insert = $pontoDao->baterPonto();
+            $check = $pontoDao->pontoCheck($data["tipo"]);
 
-            if ($insert) {
+            if ($check) {
+                echo "<script>alert('Você já bateu este ponto hoje!');</script>";
                 echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
-            } else {
-                echo "<script>alert('Erro ao bater o ponto');</script>";
-                echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
+                exit;
             }
+        }
+        $insert = $pontoDao->baterPonto();
+
+        if ($insert) {
+            echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
+        } else {
+            echo "<script>alert('Erro ao bater o ponto');</script>";
+            echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
         }
     }
 

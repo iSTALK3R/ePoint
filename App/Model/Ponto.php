@@ -7,7 +7,8 @@ class Ponto
     private $id;
     private $idFuncionario;
     private $tipo;
-    private $dataHora;
+    private $data;
+    private $hora;
 
     public function getId() {
         return $this->id;
@@ -33,11 +34,19 @@ class Ponto
         $this->tipo = $tipo;
     }
 
-    public function getDataHora() {
-        return $this->dataHora;
+    public function getData() {
+        return $this->data;
     }
 
-    public function setDataHora($dataHora) {
-        $this->dataHora = $dataHora;
+    public function setData($data) {
+        $this->data = $data;
+    }
+
+    public function getHora() {
+        return $this->hora;
+    }
+
+    public function setHora($hora) {
+        $this->hora = $hora;
     }
 }

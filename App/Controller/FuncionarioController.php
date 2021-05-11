@@ -37,6 +37,7 @@ class FuncionarioController
         if ($inUse) {
             echo "<script>alert('Nome de usuário já está em uso!');</script>";
             echo "<meta http-equiv='refresh' content='0;url=".ROOT."/funcionario'>";
+            exit;
         } else {
             $insert = $userDao->inserirFuncionario();
 
