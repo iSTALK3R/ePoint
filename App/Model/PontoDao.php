@@ -40,10 +40,12 @@ class PontoDao
         return false;
     }
 
-    public function listAllRegs() {
-        $query = "SELECT * FROM pontos AS P INNER JOIN users U ON P.users_id = U.id";
+    public function listRegsDay() {
+        $data = date('Y-m-d');
+        $query = "SELECT * FROM pontos AS P INNER JOIN users U ON P.users_id = U.id WHERE P.data = :data";
 
         $stmt = $this->instance->prepare($query);
+        $stmt->bindParam(":data", $data);
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {

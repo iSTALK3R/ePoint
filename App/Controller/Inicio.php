@@ -21,7 +21,7 @@ class Inicio
         $pontoDao = new PontoDao($ponto);
 
         $users = $userDao->listAll();
-        $pontos = $pontoDao->listAllRegs();
+        $pontos = $pontoDao->listRegsDay();
 
         echo $template->render(["url" => ROOT,
                                 "users" => $users,
