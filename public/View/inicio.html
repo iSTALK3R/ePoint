@@ -27,17 +27,19 @@
             </div>
             <div class="row mt-5 justify-content-center">
                 <div class="col-lg-4">
-                    <input type="password" name="passwd" class="form-control" placeholder="Sua senha...">
+                    <input type="password" name="passwd" class="form-control" placeholder="Sua senha..." required>
                 </div>
             </div>
             <div class="row px-5 mt-5">
                 <div class="col-lg-12 flex-wrap" id="radio-funcs">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radioTipo" id="radioTipo1" value="Entrada">
+                        <input class="form-check-input" type="radio" name="radioTipo" id="radioTipo1" value="Entrada"
+                            required>
                         <label class="form-check-label" for="radioTipo1">Entrada</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radioTipo" id="radioTipo2" value="Saida">
+                        <input class="form-check-input" type="radio" name="radioTipo" id="radioTipo2" value="Saida"
+                            required>
                         <label class="form-check-label" for="radioTipo2">Saída</label>
                     </div>
                 </div>
@@ -73,7 +75,7 @@
                 <tr>
                     <td scope="row">{{ponto.users_id}}</td>
                     <td>{{ponto.name}}</td>
-                    <td name="display_age">0</td>
+                    <td name="display_age"></td>
                     <td>{{ponto.setor}}</td>
                     <td>{{ponto.data}}</td>
                     <td>{{ponto.hora}}</td>

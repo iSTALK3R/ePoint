@@ -19,34 +19,36 @@ class FuncionarioController
     }
 
     public function addFuncionario($data) {
-        $user = new User();
+        if (!empty($data)) {
+            $user = new User();
 
-        $user->setName($data["name"]);
-        $user->setUsername($data["username"]);
-        $user->setPasswd(md5($data["passwd"]));
-        $user->setBirthDate($data["data_nascimento"]);
-        $user->setSetor($data["setor"]);
-        $user->setCpf($data["cpf"]);
-        $user->setCreatedAt(date('Y-m-d H:i:s'));
-        $user->setUpdatedAt(date('Y-m-d H:i:s'));
+            $user->setName($data["name"]);
+            $user->setUsername($data["username"]);
+            $user->setPasswd(md5($data["passwd"]));
+            $user->setBirthDate($data["data_nascimento"]);
+            $user->setSetor($data["setor"]);
+            $user->setCpf($data["cpf"]);
+            $user->setCreatedAt(date('Y-m-d H:i:s'));
+            $user->setUpdatedAt(date('Y-m-d H:i:s'));
 
-        $userDao = new UserDao($user);
+            $userDao = new UserDao($user);
 
-        $inUse = $userDao->inUse($data["username"]);
+            $inUse = $userDao->inUse($data["username"]);
 
-        if ($inUse) {
-            echo "<script>alert('Nome de usuário já está em uso!');</script>";
-            echo "<meta http-equiv='refresh' content='0;url=".ROOT."/funcionario'>";
-            exit;
-        } else {
-            $insert = $userDao->inserirFuncionario();
-
-            if ($insert) {
-                echo "<script>alert('Funcionário cadastrado com sucesso!');</script>";
-                echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
-            } else {
-                echo "<script>alert('Erro ao cadastrar o funcionário!');</script>";
+            if ($inUse) {
+                echo "<script>alert('Nome de usuário já está em uso!');</script>";
                 echo "<meta http-equiv='refresh' content='0;url=".ROOT."/funcionario'>";
+                exit;
+            } else {
+                $insert = $userDao->inserirFuncionario();
+
+                if ($insert) {
+                    echo "<script>alert('Funcionário cadastrado com sucesso!');</script>";
+                    echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
+                } else {
+                    echo "<script>alert('Erro ao cadastrar o funcionário!');</script>";
+                    echo "<meta http-equiv='refresh' content='0;url=".ROOT."/funcionario'>";
+                }
             }
         }
     }

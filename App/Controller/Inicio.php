@@ -29,40 +29,46 @@ class Inicio
     }
 
     public function baterPonto($data) {
-        $ponto = new Ponto();
+        if (!empty($data["id"])) {
 
-        $ponto->setIdFuncionario($data["id"]);
-        $ponto->setTipo($data["tipo"]);
-        $ponto->setData(date('Y-m-d'));
-        $ponto->setHora(date('H:i:s'));
+            $ponto = new Ponto();
 
-        $pontoDao = new PontoDao($ponto);
-        $user = new User();
-        $userDao = new UserDao($user);
+            $ponto->setIdFuncionario($data["id"]);
+            $ponto->setTipo($data["tipo"]);
+            $ponto->setData(date('Y-m-d'));
+            $ponto->setHora(date('H:i:s'));
 
-        $user->setId($data["id"]);
+            $pontoDao = new PontoDao($ponto);
+            $user = new User();
+            $userDao = new UserDao($user);
 
-        $auth = $userDao->auth(md5($data["passwd"]));
+            $user->setId($data["id"]);
 
-        if ($auth) {
-            echo "<script>alert('Senha incorreta!');</script>";
-            echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
-            exit;
-        } else {
-            $check = $pontoDao->pontoCheck($data["tipo"]);
+            $auth = $userDao->auth(md5($data["passwd"]));
 
-            if ($check) {
-                echo "<script>alert('Você já bateu este ponto hoje!');</script>";
+            if ($auth) {
+                echo "<script>alert('Senha incorreta!');</script>";
                 echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
                 exit;
-            }
-        }
-        $insert = $pontoDao->baterPonto();
+            } else {
+                $check = $pontoDao->pontoCheck($data["tipo"]);
 
-        if ($insert) {
-            echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
+                if ($check) {
+                    echo "<script>alert('Você já bateu este ponto hoje!');</script>";
+                    echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
+                    exit;
+                }
+            }
+            $insert = $pontoDao->baterPonto();
+
+            if ($insert) {
+                echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
+            } else {
+                echo "<script>alert('Erro ao bater o ponto');</script>";
+                echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
+            }
         } else {
-            echo "<script>alert('Erro ao bater o ponto');</script>";
+            echo "<script>alert('Selecione um funcionário!');</script>";
             echo "<meta http-equiv='refresh' content='0;url=".ROOT."'>";
         }
     }

@@ -9,41 +9,40 @@
             <form action="{{url}}/funcionario/cadastrar-funcionario" method="post">
                 <div class="mb-3">
                     <label for="name" class="form-label text-light">Nome Completo</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control" id="name" name="name" required>
                 </div>
                 <div class="mb-3">
                     <div class="row">
                         <div class="col-lg-6">
                             <label for="username" class="form-label text-light">Nome de Usuário</label>
-                            <input type="text" class="form-control" id="username" name="username">
+                            <input type="text" class="form-control" id="username" name="username" required>
                         </div>
                         <div class="col-lg-6">
                             <label for="birth" class="form-label text-light">Data de nascimento</label>
-                            <input type="date" class="form-control" id="birth" name="data_nascimento">
+                            <input type="date" class="form-control" id="birth" name="data_nascimento" required>
                         </div>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="setor" class="form-label text-light">Setor</label>
-                    <input type="text" class="form-control" id="setor" name="setor">
+                    <input type="text" class="form-control" id="setor" name="setor" required>
                 </div>
                 <div class="mb-3">
                     <label for="cpf" class="form-label text-light">CPF</label>
-                    <input type="text" class="form-control" id="cpf" name="cpf">
+                    <input type="text" class="form-control" id="cpf" name="cpf" required>
                 </div>
                 <div class="mb-3">
                     <label for="passwd" class="form-label text-light">Senha</label>
-                    <input type="password" class="form-control" id="passwd" name="passwd">
+                    <input type="password" class="form-control" id="passwd" name="passwd" required>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-success px-4">Terminar</button>
+                    <button type="submit" class="btn btn-success px-4">Cadastrar</button>
                 </div>
             </form>
         </div>
-        <div class="col-lg-6 text-end mb-5">
+        <div class="col-lg-6 text-center mb-5">
             <h2 class="text-light text-center mt-3">Cadastro de Funcionários</h2>
-            <img src="https://bpng.subpng.com/dy/db9bbea07260f7e5fa5b1b3b92366b54/L0KzQYq3VMEyN6F1i5H0aYP2gLBuTfNtd6ZpRdV4bYD4hLr1h71laaVmReV9b4Lkd7a0gB9ueKZ5feQ2c3X1hrb5k71xepDpRadsYXbpSLWChfY1aWc3RqY7OEW0Q4m4UcU2PWE4TqUCN0m7QIK1kP5o/kisspng-cloud-computing-data-storage-computer-servers-prod-5caff8d9ef4a62.4285138115550363779801.png"
-                alt="abstract" style="width: 500px; height: 350px;">
+            <img src="{{url}}/public/assets/images/emp.png" class="mt-5" alt="abstract">
         </div>
     </div>
 </section>
