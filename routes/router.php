@@ -12,6 +12,7 @@ $router->post("/bater-ponto", "Inicio:baterPonto");
 
 $router->group("funcionario");
 $router->get("/", "FuncionarioController:viewAddFuncionario");
+$router->get("/remover-funcionario/{id}", "FuncionarioController:removeFuncionario");
 $router->post("/cadastrar-funcionario", "FuncionarioController:addFuncionario");
 
 $router->group("error")->namespace("App\Controller");

@@ -88,11 +88,27 @@ class UserDao
         $stmt->bindParam(':name',   $data["name"]);
         $stmt->bindParam(':user',   $data["user"]);
         $stmt->bindParam(':pass',   $data["pass"]);
-        $stmt->bindParam(':birth',   $data["birth"]);
+        $stmt->bindParam(':birth',  $data["birth"]);
         $stmt->bindParam(':setor',  $data["setor"]);
         $stmt->bindParam(':cpf',    $data["cpf"]);
         $stmt->bindParam(':crat',   $data["crat"]);
         $stmt->bindParam(':upat',   $data["upat"]);
+
+        $exec = $stmt->execute();
+
+        if ($exec) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function deleteFuncionario() {
+        $id = $this->user->getId();
+
+        $query = "DELETE FROM users WHERE id = :id";
+        $stmt = $this->instance->prepare($query);
+        $stmt->bindParam(':id', $id);
 
         $exec = $stmt->execute();
 

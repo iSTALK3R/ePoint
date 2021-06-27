@@ -15,7 +15,12 @@ class FuncionarioController
 
         $template = $twig->load('cadastro_funcionario.html');
 
-        echo $template->render(["url" => ROOT]);
+        $user = new User();
+        $userDao = new UserDao($user);
+
+        $users = $userDao->listAll();
+
+        echo $template->render(["url" => ROOT, "users" => $users]);
     }
 
     public function addFuncionario($data) {
@@ -50,6 +55,22 @@ class FuncionarioController
                     echo "<meta http-equiv='refresh' content='0;url=".ROOT."/funcionario'>";
                 }
             }
+        }
+    }
+
+    public function removeFuncionario($id) {
+        $user = new User();
+        $user->setId($id["id"]);
+        
+        $userDao = new UserDao($user);
+        $del = $userDao->deleteFuncionario();
+
+        if ($del) {
+            echo "<script>alert('Usuário excluído com sucesso!');</script>";
+            echo "<meta http-equiv='refresh' content='0;url=".ROOT."/funcionario'>";
+        } else {
+            echo "<script>alert('Não foi possível excluir o usuário!');</script>";
+            echo "<meta http-equiv='refresh' content='0;url=".ROOT."/funcionario'>";
         }
     }
 
